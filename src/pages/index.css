@@ -1,3 +1,23 @@
 .site-page-header {
     border: 1px solid rgb(235, 237, 240);
 }
+
+.ant-page-header-heading{
+    max-width: 1480px;
+    margin: auto;
+
+}
+
+.container{
+    max-width: 1480px;
+    margin: auto;
+}
+
+h3{
+    margin-top: 3rem;
+}
+
+.ant-table{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
