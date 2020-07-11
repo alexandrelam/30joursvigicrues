@@ -37,7 +37,8 @@ export default function IndexPage() {
       const jour = splitted_date[2]
       const time = splitted_date_time[1]
       const hour = time.split(":")[0]
-      if (hour === "06") {
+      const minute = time.split(":")[1]
+      if (hour === "06" && minute === "00") {
         count++
         const dataObj = {
           key: count,
