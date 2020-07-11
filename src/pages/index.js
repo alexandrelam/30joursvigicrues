@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
 import "antd/dist/antd.css"
 import "./index.css"
-import { PageHeader, Table, Tag, Space } from "antd"
+import { PageHeader, Table } from "antd"
 
 import SEO from "../components/seo"
+import Selection from "../components/selection"
 
 export default function IndexPage() {
   const [station, setStation] = useState("")
   const [apiRes, setApiRes] = useState([])
   const [data, setData] = useState([])
+  const [radioValue, setRadioValue] = useState("F700000103")
 
   const columns = [
     {
@@ -42,7 +44,7 @@ export default function IndexPage() {
         count++
         const dataObj = {
           key: count,
-          date: jour+"/"+mois+"/"+annee,
+          date: jour + "/" + mois + "/" + annee,
           hauteur: hauteur,
         }
         dataArray.push(dataObj)
@@ -50,21 +52,19 @@ export default function IndexPage() {
     })
 
     setData(dataArray)
-    console.log(dataArray)
   }
 
   useEffect(() => {
     fetch(
-      "https://www.vigicrues.gouv.fr/services/observations.json/?CdStationHydro=F700000103&FormatDate=iso"
+      `https://www.vigicrues.gouv.fr/services/observations.json/?CdStationHydro=${radioValue}&FormatDate=iso`
     )
       .then(res => res.json())
       .then(res => {
         setStation(res.Serie.LbStationHydro)
         setApiRes(res.Serie.ObssHydro)
         parseData(res.Serie.ObssHydro)
-        console.log(res)
       })
-  }, [])
+  }, [radioValue])
 
   return (
     <div>
@@ -75,7 +75,8 @@ export default function IndexPage() {
         subTitle="Récupérer les données de Vigicrues facilement !"
       />
       <div className="container">
-        <h3>Station : {station}    -     à 6h</h3>
+        <h3>Station : {station} - à 6h</h3>
+        <Selection radioValue={radioValue} setRadioValue={setRadioValue} />
         <Table columns={columns} dataSource={data} pagination={false} />
       </div>
     </div>
