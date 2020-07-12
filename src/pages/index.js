@@ -4,13 +4,17 @@ import "./index.css"
 import { PageHeader, Table } from "antd"
 
 import SEO from "../components/seo"
+import Addform from "../components/addform"
 import Selection from "../components/selection"
 
 export default function IndexPage() {
-  const [station, setStation] = useState("")
-  const [apiRes, setApiRes] = useState([])
+  const [activeStation, setActiveStation] = useState("")
   const [data, setData] = useState([])
   const [radioValue, setRadioValue] = useState("F700000103")
+  const [stationNames, setStationNames] = useState([
+    { id: "F700000103", name: "Paris [Austerlitz - Station ultrason (UF)]" },
+    { id: "F664000104", name: "Gournay-sur-Marne [Pont]" },
+  ])
 
   const columns = [
     {
@@ -29,7 +33,7 @@ export default function IndexPage() {
     let count = 0
     let dataArray = []
 
-    apiRes.map(data => {
+    apiRes.forEach((data, index) => {
       const hauteur = data.ResObsHydro
       const splitted_date_time = data.DtObsHydro.split("T")
       const date = splitted_date_time[0]
@@ -60,8 +64,7 @@ export default function IndexPage() {
     )
       .then(res => res.json())
       .then(res => {
-        setStation(res.Serie.LbStationHydro)
-        setApiRes(res.Serie.ObssHydro)
+        setActiveStation(res.Serie.LbStationHydro)
         parseData(res.Serie.ObssHydro)
       })
   }, [radioValue])
@@ -72,11 +75,20 @@ export default function IndexPage() {
       <PageHeader
         className="site-page-header"
         title="30 jours Vigicrues"
-        subTitle="Récupérer les données de Vigicrues facilement !"
+        subTitle="Récupérez les données de Vigicrues facilement !"
       />
       <div className="container">
-        <h3>Station : {station} - à 6h</h3>
-        <Selection radioValue={radioValue} setRadioValue={setRadioValue} />
+        <Addform
+          stationNames={stationNames}
+          setStationNames={setStationNames}
+        />
+        <h4>Sélectionnez une station</h4>
+        <Selection
+          radioValue={radioValue}
+          setRadioValue={setRadioValue}
+          stationNames={stationNames}
+        />
+        <h3>Station : {activeStation} - à 6h</h3>
         <Table columns={columns} dataSource={data} pagination={false} />
       </div>
     </div>

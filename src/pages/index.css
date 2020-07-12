@@ -22,3 +22,20 @@ h3{
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
+
+.search-container{
+    max-width: 40rem;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.gatsby-image-wrapper{
+    max-width: 70%;
+    max-height: 70%;
+    margin-bottom: 5rem;
+}
+
+.guide-h3{
+    margin: 0;
+}
