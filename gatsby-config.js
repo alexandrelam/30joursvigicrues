@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/30joursvigicrues",
+  pathPrefix: `/30joursvigicrues`,
   siteMetadata: {
     title: `30 jours Vigicrues`,
     description: `Récupérez les données de Vigicrues facilement !`,
@@ -19,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `30joursvigicrues`,
+        short_name: `30joursvigicrues`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
