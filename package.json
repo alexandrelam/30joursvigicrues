@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "30joursvigicrues",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Récupérez les données de Vigicrues facilement !",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Alexandre LAM <alexandrelam@outlook.com>",
   "dependencies": {
     "antd": "^4.4.1",
     "gatsby": "^2.23.12",

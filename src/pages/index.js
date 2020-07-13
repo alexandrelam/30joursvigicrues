@@ -77,7 +77,7 @@ export default function IndexPage() {
         title="30 jours Vigicrues"
         subTitle="Récupérez les données de Vigicrues facilement !"
       />
-      <div className="container">
+      <div className="container md">
         <Addform
           stationNames={stationNames}
           setStationNames={setStationNames}
