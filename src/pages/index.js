@@ -6,6 +6,7 @@ import { PageHeader, Table } from "antd"
 import SEO from "../components/seo"
 import Addform from "../components/addform"
 import Selection from "../components/selection"
+import Choosetime from "../components/choosetime"
 
 export default function IndexPage() {
   const [activeStation, setActiveStation] = useState("")
@@ -15,6 +16,7 @@ export default function IndexPage() {
     { id: "F700000103", name: "Paris [Austerlitz - Station ultrason (UF)]" },
     { id: "F664000104", name: "Gournay-sur-Marne [Pont]" },
   ])
+  const [time, setTime] = useState("06:00")
 
   const columns = [
     {
@@ -41,10 +43,13 @@ export default function IndexPage() {
       const annee = splitted_date[0]
       const mois = splitted_date[1]
       const jour = splitted_date[2]
-      const time = splitted_date_time[1]
+      const fetchedTime = splitted_date_time[1]
+      const fetchedHour = fetchedTime.split(":")[0]
+      const fetchedMinute = fetchedTime.split(":")[1]
       const hour = time.split(":")[0]
-      const minute = time.split(":")[1]
-      if (hour === "06" && minute === "00") {
+
+      console.log(fetchedTime)
+      if (hour === fetchedHour && fetchedMinute === "00") {
         count++
         const dataObj = {
           key: count,
@@ -67,7 +72,7 @@ export default function IndexPage() {
         setActiveStation(res.Serie.LbStationHydro)
         parseData(res.Serie.ObssHydro)
       })
-  }, [radioValue])
+  }, [radioValue, time])
 
   return (
     <div>
@@ -82,13 +87,19 @@ export default function IndexPage() {
           stationNames={stationNames}
           setStationNames={setStationNames}
         />
-        <h4>Sélectionnez une station</h4>
-        <Selection
-          radioValue={radioValue}
-          setRadioValue={setRadioValue}
-          stationNames={stationNames}
-        />
-        <h3>Station : {activeStation} - à 6h</h3>
+        <div className="settings">
+          <div>
+            <h4>Sélectionnez une station</h4>
+            <Selection
+              radioValue={radioValue}
+              setRadioValue={setRadioValue}
+              stationNames={stationNames}
+            />
+          </div>
+          <Choosetime setTime={setTime}/>
+        </div>
+
+  <h3>Station : {activeStation} - à {time}</h3>
         <Table columns={columns} dataSource={data} pagination={false} />
       </div>
     </div>

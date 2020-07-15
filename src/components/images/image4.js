@@ -7,7 +7,7 @@ export default function Image4() {
     query {
       placeholderImage: file(relativePath: { eq: "4.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 1000, quality:100) {
             ...GatsbyImageSharpFluid
           }
         }
