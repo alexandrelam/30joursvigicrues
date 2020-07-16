@@ -1,0 +1,54 @@
+.site-page-header {
+    border: 1px solid rgb(235, 237, 240);
+}
+
+.ant-page-header-heading{
+    max-width: 1480px;
+    margin: auto;
+
+}
+
+.container{
+    max-width: 1480px;
+    padding: 16px 24px;
+    margin: auto;
+}
+
+.md{
+    max-width: 50rem;
+}
+
+h3{
+    margin-top: 3rem;
+}
+
+.ant-table{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+.search-container{
+    max-width: 50rem;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.gatsby-image-wrapper{
+    max-width: 70%;
+    max-height: 70%;
+    margin-bottom: 5rem;
+}
+
+.guide-h3{
+    margin: 0;
+}
+
+.settings{
+    display: flex;
+}
+
+.settings .ant-picker{
+    height: 3rem;
+    margin: auto;
+}
