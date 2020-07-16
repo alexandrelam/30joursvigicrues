@@ -1,5 +1,6 @@
 module.exports = {
   pathPrefix: `/30joursvigicrues`,
+  assetPrefix: `/30joursvigicrues`,
   siteMetadata: {
     title: `30 jours Vigicrues`,
     description: `Récupérez les données de Vigicrues facilement !`,
