@@ -31,6 +31,15 @@ export default function IndexPage() {
     },
   ]
 
+  const formatterHauteur = (hauteur) => {
+    // Change les points pour des virgules
+    if(hauteur.length === 1) {
+      return hauteur.concat("", ",00")
+    }else{
+      return hauteur.replace('.',',')
+    }
+  }
+
   function parseData(apiRes) {
     let count = 0
     let dataArray = []
@@ -39,22 +48,23 @@ export default function IndexPage() {
       const hauteur = data.ResObsHydro
       const splitted_date_time = data.DtObsHydro.split("T")
       const date = splitted_date_time[0]
+
       const splitted_date = date.split("-")
       const annee = splitted_date[0]
       const mois = splitted_date[1]
       const jour = splitted_date[2]
+      
       const fetchedTime = splitted_date_time[1]
       const fetchedHour = fetchedTime.split(":")[0]
       const fetchedMinute = fetchedTime.split(":")[1]
       const hour = time.split(":")[0]
 
-      console.log(fetchedTime)
       if (hour === fetchedHour && fetchedMinute === "00") {
         count++
         const dataObj = {
           key: count,
           date: jour + "/" + mois + "/" + annee,
-          hauteur: hauteur,
+          hauteur: formatterHauteur(hauteur.toString()),
         }
         dataArray.push(dataObj)
       }
