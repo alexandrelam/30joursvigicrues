@@ -31,12 +31,12 @@ export default function IndexPage() {
     },
   ]
 
-  const formatterHauteur = (hauteur) => {
+  const formatterHauteur = hauteur => {
     // Change les points pour des virgules
-    if(hauteur.length === 1) {
+    if (hauteur.length === 1) {
       return hauteur.concat("", ",00")
-    }else{
-      return hauteur.replace('.',',')
+    } else {
+      return hauteur.replace(".", ",")
     }
   }
 
@@ -53,7 +53,7 @@ export default function IndexPage() {
       const annee = splitted_date[0]
       const mois = splitted_date[1]
       const jour = splitted_date[2]
-      
+
       const fetchedTime = splitted_date_time[1]
       const fetchedHour = fetchedTime.split(":")[0]
       const fetchedMinute = fetchedTime.split(":")[1]
@@ -106,10 +106,12 @@ export default function IndexPage() {
               stationNames={stationNames}
             />
           </div>
-          <Choosetime setTime={setTime}/>
+          <Choosetime setTime={setTime} />
         </div>
 
-  <h3>Station : {activeStation} - à {time}</h3>
+        <h3>
+          Station : {activeStation} - à {time}
+        </h3>
         <Table columns={columns} dataSource={data} pagination={false} />
       </div>
     </div>

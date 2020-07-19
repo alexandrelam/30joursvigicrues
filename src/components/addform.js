@@ -2,7 +2,6 @@ import React from "react"
 import { Input } from "antd"
 import { Link } from "gatsby"
 
-
 export default function Addform({ stationNames, setStationNames }) {
   const { Search } = Input
 
