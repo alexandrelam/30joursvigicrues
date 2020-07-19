@@ -2,7 +2,7 @@ import React from "react"
 import { TimePicker } from "antd"
 import moment from "moment"
 
-export default function Choosetime({setTime}) {
+export default function Choosetime({ setTime }) {
   const format = "HH:mm"
 
   return (
@@ -11,7 +11,7 @@ export default function Choosetime({setTime}) {
       minuteStep={60}
       format={format}
       showNow={false}
-      onChange={(e,s)=>setTime(s)}
+      onChange={(e, s) => setTime(s)}
     />
   )
 }

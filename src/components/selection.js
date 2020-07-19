@@ -1,11 +1,7 @@
 import React from "react"
 import { Radio } from "antd"
 
-export default function Selection({
-  radioValue,
-  setRadioValue,
-  stationNames,
-}) {
+export default function Selection({ radioValue, setRadioValue, stationNames }) {
   const onChange = e => {
     setRadioValue(e.target.value)
   }
